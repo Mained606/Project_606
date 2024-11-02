@@ -8,7 +8,7 @@ namespace Mained_606
 {
     public class InputReader : MonoBehaviour, Controls.IPlayerActions
     {
-        public Vector2 MoventValue { get; private set; }
+        public Vector2 MovementValue { get; private set; }
         public event Action JumpEvent;
         public event Action DodgeEvent;
         private Controls controls;
@@ -40,8 +40,13 @@ namespace Mained_606
 
         public void OnMove(InputAction.CallbackContext context)
         {
-            MoventValue = context.ReadValue<Vector2>();
+            MovementValue = context.ReadValue<Vector2>();
 
+        }
+
+        public void OnLook(InputAction.CallbackContext context)
+        {
+            
         }
     }
 
