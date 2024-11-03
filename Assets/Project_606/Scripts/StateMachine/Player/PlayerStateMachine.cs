@@ -8,8 +8,11 @@ namespace Mained_606
     {
         [field: SerializeField] public InputReader InputReader { get; private set; }
         [field: SerializeField] public CharacterController Controller { get; private set; }
+        [field: SerializeField] public ForceReciver ForceReciver { get; private set; }
         [field: SerializeField] public Animator Animator { get; private set; }
+        [field: SerializeField] public Targeter Targeter { get; private set; }
         [field: SerializeField] public float FreeLookMovenmentSpeed { get; private set; }
+        [field: SerializeField] public float TargetingMovenmentSpeed { get; private set; }
         [field: SerializeField] public float RotationDamping { get; private set; }
         
 
@@ -19,7 +22,7 @@ namespace Mained_606
         {
             MainCameraTransform = Camera.main.transform;
             
-            SwitchState(new PlayeyFreeLookState(this));
+            SwitchState(new PlayerFreeLookState(this));
         }
     }
 
