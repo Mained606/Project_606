@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,6 +9,7 @@ namespace Mained_606
 {
     public class InputReader : MonoBehaviour, Controls.IPlayerActions
     {
+        public bool IsAttacking { get; private set; }
         public Vector2 MovementValue { get; private set; }
         
         public event Action JumpEvent;
@@ -65,6 +67,18 @@ namespace Mained_606
             if (!context.performed) return;
 
             CancelEvent?.Invoke();           
+        }
+
+        public void OnAttack(InputAction.CallbackContext context)
+        {
+            if(context.performed)
+            {
+                IsAttacking = true;
+            }
+            else if (context.canceled)
+            {
+                IsAttacking = false;
+            }
         }
     }
 

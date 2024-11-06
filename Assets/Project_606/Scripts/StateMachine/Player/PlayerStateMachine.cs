@@ -14,6 +14,8 @@ namespace Mained_606
         [field: SerializeField] public float FreeLookMovenmentSpeed { get; private set; }
         [field: SerializeField] public float TargetingMovenmentSpeed { get; private set; }
         [field: SerializeField] public float RotationDamping { get; private set; }
+        [field: SerializeField] public Attack[] Attacks { get; private set; }
+
         
 
         public Transform MainCameraTransform {get; private set;}
