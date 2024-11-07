@@ -273,6 +273,12 @@ Transform:
   - {fileID: 2111037499}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!143 &1127894648 stripped
+CharacterController:
+  m_CorrespondingSourceObject: {fileID: 4273053137042352212, guid: d3ce956af742244b29ca5d8edb8ad7a4,
+    type: 3}
+  m_PrefabInstance: {fileID: 751604652117975037}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1432660627
 GameObject:
   m_ObjectHideFlags: 0
@@ -973,6 +979,11 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.054140683
       objectReference: {fileID: 0}
+    - target: {fileID: 4750760697354599529, guid: d3ce956af742244b29ca5d8edb8ad7a4,
+        type: 3}
+      propertyPath: myCollider
+      value: 
+      objectReference: {fileID: 1127894648}
     - target: {fileID: 4802984151728678205, guid: d3ce956af742244b29ca5d8edb8ad7a4,
         type: 3}
       propertyPath: m_LocalPosition.x
