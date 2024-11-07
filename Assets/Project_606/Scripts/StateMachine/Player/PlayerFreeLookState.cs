@@ -11,6 +11,8 @@ namespace Mained_606
         private readonly int FreeLookSpeedHash = Animator.StringToHash("FreeLookSpeed");
 
         private const float AnimatorDampTime = 0.1f;
+
+        private const float CrossFadeDuration = 0.1f;
         
         public PlayerFreeLookState(PlayerStateMachine stateMachine) : base(stateMachine) { }
 
@@ -19,7 +21,7 @@ namespace Mained_606
         {
             stateMachine.InputReader.TargetEvent += OnTarget;
 
-            stateMachine.Animator.Play(FreeLookBlendTreeHash);
+            stateMachine.Animator.CrossFadeInFixedTime(FreeLookBlendTreeHash, CrossFadeDuration);
         }
 
 

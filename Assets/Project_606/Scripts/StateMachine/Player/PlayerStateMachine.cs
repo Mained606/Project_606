@@ -9,6 +9,7 @@ namespace Mained_606
         [field: SerializeField] public InputReader InputReader { get; private set; }
         [field: SerializeField] public CharacterController Controller { get; private set; }
         [field: SerializeField] public ForceReciver ForceReciver { get; private set; }
+        [field: SerializeField] public WeaponDamage Weapon { get; private set; }
         [field: SerializeField] public Animator Animator { get; private set; }
         [field: SerializeField] public Targeter Targeter { get; private set; }
         [field: SerializeField] public float FreeLookMovenmentSpeed { get; private set; }

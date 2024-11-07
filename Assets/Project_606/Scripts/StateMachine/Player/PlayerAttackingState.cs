@@ -6,6 +6,7 @@ namespace Mained_606
     public class PlayerAttackingState : PlayerBaseState
     {
         private float previousFrameTime;
+        private bool alreadyAppliedForce;
 
         private Attack attack;
 
@@ -16,6 +17,7 @@ namespace Mained_606
 
         public override void Enter()
         {
+            stateMachine.Weapon.SetAttack(attack.Damage);
             stateMachine.Animator.CrossFadeInFixedTime(attack.AnimationName, attack.TranstitionDuration);
         }
 
@@ -27,8 +29,13 @@ namespace Mained_606
 
             float normalizedTime = GetNormalizedTime();
             
-            if(normalizedTime > previousFrameTime && normalizedTime < 1f)
+            if(normalizedTime >= previousFrameTime && normalizedTime < 1f)
             {
+                if(normalizedTime >= attack.ForceTime)
+                {
+                    TryApplyForce();
+                }
+
                 if(stateMachine.InputReader.IsAttacking)
                 {
                     TryComboAttack(normalizedTime);
@@ -36,7 +43,14 @@ namespace Mained_606
             }
             else
             {
-                // go back to locomotion
+                if(stateMachine.Targeter.CurrentTarget != null)
+                {
+                    stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
+                }
+                else
+                {
+                    stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
+                }
             }
 
             previousFrameTime = normalizedTime;
@@ -61,6 +75,15 @@ namespace Mained_606
                     attack.ComboStateIndex
                 )
             );
+        }
+
+        private void TryApplyForce()
+        {
+            if(alreadyAppliedForce) {return;}
+
+            stateMachine.ForceReciver.AddForce(stateMachine.transform.forward * attack.Force);
+
+            alreadyAppliedForce = true;
         }
 
         private float GetNormalizedTime()
